@@ -16,16 +16,16 @@ public class Estado implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long ID;
+    private Long Id;
     private String nome;
     private String sigla;
 
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return Id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getNome() {
