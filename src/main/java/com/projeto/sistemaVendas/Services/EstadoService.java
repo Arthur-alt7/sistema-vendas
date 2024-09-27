@@ -31,8 +31,8 @@ public class EstadoService {
         return (listaEstados);
     }
 
-    public Estado findEstadoById(Long Id) throws Exception{
-        return this.estadoRepository.findById(Id).orElseThrow(() -> new Exception("Estado não encontrado!"));
+    public Estado findEstadoById(Long id) throws Exception{
+        return this.estadoRepository.findById(id).orElseThrow(() -> new Exception("Estado não encontrado!"));
     }
 
     public String deleteEstado(Estado estado) throws Exception{

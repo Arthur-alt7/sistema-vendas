@@ -11,12 +11,12 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <title>Document</title>
+    <title>Sistema de vendas</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-        <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/05/Logo-Lobo-PNG.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5899/5899792.png" width="30" height="30" class="d-inline-block align-top" alt="">
 
         <a class="navbar-brand" href="#">Sistema de Vendas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -26,7 +26,6 @@
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -42,15 +41,32 @@
       </nav>
 
     <div class="container-fluid">
-        <h1>........</h1>
+        <h1>Home</h1>
         <div class="row">
-            <div class="col-md-3 ">
+            <div class="col-md-3" >
                 <ul class="list-group" style="margin-top: 10px;">
                     
-                    <li class="list-group-item active"> <i class="fa-solid fa-circle-plus"></i> Estado </li>
-                    <a href="/cadastroEstado"><li class="list-group-item">Cadastro Estado</li></a>
-                    <a href="/listarEstados"><li class="list-group-item">Lista estados </li></a>
+                    <li class="list-group-item" style="background-color: #e3f2fd;"> <i class="fa-solid fa-gears"></i> Funcionalidades </li>
+                     <a href="/cadastroVenda" class="text-dark"><li class="list-group-item">Efetuar Venda</li></a>
+                     <a href="/listarVenda" class="text-dark"><li class="list-group-item">Listar Vendas</li></a>
+                     <a href="/cadastroEntrada" class="text-dark"><li class="list-group-item">Efetuar Entrada de Produto</li></a>
+                     <a href="/listarEntrada" class="text-dark"><li class="list-group-item">Listar Entradas de Produtos</li></a>
                     
+                    <li class="list-group-item" style="background-color: #e3f2fd;"> <i class="fa-solid fa-circle-plus"></i> Cadastros </li>
+                    <a href="/cadastroEstado" class="text-dark"><li class="list-group-item">Cadastro Estado</li></a>
+                    <a href="/cadastroCidade" class="text-dark"><li class="list-group-item">Cadastro Cidade</li></a>
+                    <a href="/cadastroFuncionario" class="text-dark"><li class="list-group-item">Cadastro Funcionario</li></a>
+                    <a href="/cadastroCliente" class="text-dark"><li class="list-group-item">Cadastro Cliente</li></a>
+                    <a href="/cadastroFornecedor" class="text-dark"><li class="list-group-item">Cadastro Fornecedor</li></a>
+                    <a href="/cadastroProduto" class="text-dark"><li class="list-group-item">Cadastro Produto</li></a>                                         
+                               
+                    <li class="list-group-item" style="background-color: #e3f2fd;"> <i class="fa-solid fa-rectangle-list"></i> Listas </li> 
+                    <a href="/listarEstado" class="text-dark"><li class="list-group-item">Lista Estado</li></a>
+    			          <a href="/listarCidade" class="text-dark"><li class="list-group-item">Lista Cidade</li></a>
+                    <a href="/listarFuncionario" class="text-dark"><li class="list-group-item">Lista Funcionario</li></a>
+                    <a href="/listarCliente" class="text-dark"><li class="list-group-item">Lista Cliente</li></a>
+                    <a href="/listarFornecedor" class="text-dark"><li class="list-group-item">Lista Fornecedor</li></a>
+                    <a href="/listarProduto" class="text-dark"><li class="list-group-item">Lista Produto</li></a>
                   </ul>
             </div>
             <div class="col-md-9"> 

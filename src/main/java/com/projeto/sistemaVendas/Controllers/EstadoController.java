@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.projeto.sistemaVendas.Models.Estado;
 import com.projeto.sistemaVendas.Repository.EstadoRepository;
 import com.projeto.sistemaVendas.Services.EstadoService;
@@ -39,17 +40,17 @@ public class EstadoController {
         return cadastrarEstado(new Estado());
     }
 
-    @GetMapping("/listarEstados")
+    @GetMapping("/listarEstado")
     public ModelAndView listar() throws Exception {
         ModelAndView mv = new ModelAndView("administrativo/estado/listaEstado");
         mv.addObject("listaEstados", estadoService.getAllEstados());
         return mv;
     }
 
-    @GetMapping("/editarEstado/{Id}")
-    public ModelAndView editar(@PathVariable("Id") Long Id) throws Exception {
+    @GetMapping("/editarEstado/{id}")
+    public ModelAndView editar(@PathVariable("id") Long id) throws Exception {
         //Optional<Estado> estado = estadoRepository.findById(Id);
-        Estado estado = estadoService.findEstadoById(Id);
+        Estado estado = estadoService.findEstadoById(id);
         //return cadastrarEstado(estado.get());
         return cadastrarEstado(estado);
     }
