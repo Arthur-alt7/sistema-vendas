@@ -22,9 +22,9 @@ public class CidadeController {
     
 
     @GetMapping("/cadastroCidade")
-    public ModelAndView cadastrarCidade(Cidade Cidade) throws Exception {
+    public ModelAndView cadastrarCidade(Cidade cidade) throws Exception {
         ModelAndView mv = new ModelAndView("administrativo/cidade/cadastro");
-        mv.addObject("Cidade", Cidade);
+        mv.addObject("Cidade", cidade);
         mv.addObject("listaEstados", estadoService.getAllEstados());
         return mv; 
     }
@@ -50,7 +50,7 @@ public class CidadeController {
         //Optional<Cidade> cidade = CidadeRepository.findById(Id);
         Cidade cidade = cidadeService.findCidadeById(id);
         //return cadastrarCidade(cidade.get());
-        return cadastrarCidade(Cidade);
+        return cadastrarCidade(cidade);
     }
 
     @GetMapping("/removerCidade/{id}")

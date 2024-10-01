@@ -16,15 +16,15 @@ import com.projeto.sistemaVendas.Repository.CidadeRepository;
 public class CidadeService {
 
     @Autowired
-    private CidadeRepository CidadeRepository;
+    private CidadeRepository cidadeRepository;
 
-    public Cidade createCidade(Cidade Cidade){
-        Cidade newCidade = Cidade;
-        return CidadeRepository.save(newCidade);
+    public Cidade createCidade(Cidade cidade){
+        Cidade newCidade = cidade;
+        return cidadeRepository.save(newCidade);
     }
 
     public List<Cidade> getAllCidades() throws Exception{
-        List<Cidade> listaCidades = this.CidadeRepository.findAll();
+        List<Cidade> listaCidades = this.cidadeRepository.findAll();
         if(listaCidades.isEmpty()){
             throw new Exception("Cidades não encontrados");
         }
@@ -32,12 +32,12 @@ public class CidadeService {
     }
 
     public Cidade findCidadeById(Long id) throws Exception{
-        return this.CidadeRepository.findById(id).orElseThrow(() -> new Exception("Cidade não encontrado!"));
+        return this.cidadeRepository.findById(id).orElseThrow(() -> new Exception("Cidade não encontrado!"));
     }
 
-    public String deleteCidade(Cidade Cidade) throws Exception{
+    public String deleteCidade(Cidade cidade) throws Exception{
           try {
-            CidadeRepository.delete(Cidade);
+            cidadeRepository.delete(cidade);
             return ("Cidade deletado com sucesso!");
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException("Cidade não encontrado!");

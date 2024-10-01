@@ -12,7 +12,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
 	    
-    <title>Lista estados</title>
+    <title>Lista funcionarios</title>
     
     
     
@@ -54,21 +54,33 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 			<tr>
 				<td>ID</td>
 				<td>Nome</td>
-        <td>CEP</td>
-				<td>Estado</td>
+				<td>CPF</td>
+				<td>Telefone</td>
+				<td>Endereco</td>
+				<td>Numero</td>
+				<td>Bairro</td>
+				<td>E-mail</td>
+				<td>Função</td>
+				<td>Cidade</td>
 				<td>Ação</td>
 			</tr>
 		</thead>
 		
 		<tbody>
-			<tr th:each="cidade: ${listaCidades}">
-				<td th:text="${cidade.id}"></td>
-				<td th:text="${cidade.nome}"></td>
-				<td th:text="${cidade.cep}"></td>
-        <td th:text="${cidade.estado.nome}"></td>
+			<tr th:each="funcionario: ${listaFuncionarios}">
+				<td th:text="${funcionario.id}"></td>
+				<td th:text="${funcionario.nome}"></td>
+				<td th:text="${funcionario.cpf}"></td>
+				<td th:text="${funcionario.telefone}"></td>
+				<td th:text="${funcionario.endereco}"></td>
+				<td th:text="${funcionario.numero}"></td>
+				<td th:text="${funcionario.bairro}"></td>
+				<td th:text="${funcionario.email}"></td>
+				<td th:text="${funcionario.funcao}"></td>
+				<td th:text="${funcionario.cidade.nome}"></td>
 				<td colspan="2">
-					<a th:href="@{/editarCidade/{id}(id=${cidade.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-					<a th:href="@{/removerCidade/{id}(id=${cidade.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
+					<a th:href="@{/editarFuncionario/{id}(id=${funcionario.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
+					<a th:href="@{/removerFuncionario/{id}(id=${funcionario.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
 				</td>
 				
 			
@@ -78,7 +90,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	</table>
    
         	 <a class="btn btn-danger" href="/administrativo"><i class="fa-solid fa-share"></i> Voltar </a> 
-        	 <a class="btn btn-primary" href="/cadastroCidade"><i class="fa-solid fa-plus"></i> Cadastrar </a> 
+        	 <a class="btn btn-primary" href="/cadastroFuncionario"><i class="fa-solid fa-plus"></i> Cadastrar </a> 
         
           
          

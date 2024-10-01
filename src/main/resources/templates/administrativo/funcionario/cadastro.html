@@ -11,7 +11,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <title>Cadastro Cidade</title>
+    <title>Cadastro Funcionario</title>
 </head>
 <body>
 
@@ -41,36 +41,79 @@
   </nav>
 
     <div class="container">
-        <form action="/salvarCidade" th:object="${Cidade}" method="POST">
-            <div class="form-group">
-            <label for="id">ID:</label>
-              <input type="text" readonly="true" class="form-control" id="id" th:field="*{id}">
-              
-              <label >Nome Cidade:</label>
-              <input type="text" class="form-control" th:field="*{nome}">
-              
-              <label for="sigla">CEP:</label>
-              <input type="text" class="form-control" id="cep" th:field="*{cep}"> 
-
-              <label>Estado</label>
-              <select th:field="*{estado}" class="form-control">
-                <option th:each="est : ${listaEstados}" th:value="${est.id}" th:text="${est.nome}"></option>
-              </select>
-   
+        <form action="/salvarFuncionario" th:object="${funcionario}" method="POST">
+          <div class="form-group">
             
+            <div class="row">
+            
+              <div class="col-md">
+                  <label for="id">ID:</label>
+                    <input type="text" readonly="true" class="form-control" id="id" th:field="*{id}">
+              </div>
+              
+              <div class="col-md">
+                <label >Nome Funcionario:</label>
+                  <input type="text" required class="form-control" th:field="*{nome}">
+              </div>
+              
+              <div class="col-md">
+                <label >CPF:</label>
+                  <input type="text" id="cpf" required class="form-control" th:field="*{cpf}">
+              </div>
+              
             </div>
+            
+            <div class="row">
+              <div class="col-md">
+                  <label >Telefone:</label>
+                    <input type="text" id="telefone" required class="form-control" th:field="*{telefone}">
+              </div>
+              <div class="col-md">
+                 <label >Endereço:</label>
+                   <input type="text" required class="form-control" th:field="*{endereco}">
+              </div>
+              <div class="col-md">
+                <label >Número:</label>
+                  <input type="text" required class="form-control" th:field="*{numero}">	
+              </div>
+            </div>
+          
+              <div class="row">
+              
+              <div class="col-md">
+                <label >Bairro:</label>
+                  <input type="text" required class="form-control" th:field="*{bairro}">	
+              </div>
+              
+              <div class="col-md">
+                    <label >E-mail:</label>
+                  <input type="text" required class="form-control" th:field="*{email}">          		
+              </div>
+              
+              <div class="col-md">
+                 <label >Função:</label>
+                  <input type="text" required class="form-control" th:field="*{funcao}"> 		
+              </div>
+              
+              <div class="col-md">
+                 <label>Cidade:</label>
+                 <select th:field="*{cidade}" class="form-control">
+                   <option th:each="est : ${listaCidades}" th:value="${est.id}" th:text="${est.nome}"></option>
+                 </select>
+              </div>
+              
+            </div>
+            
+
+
+          </div>
      
        
             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
         	 <!--<a class="btn btn-danger" href="/administrativo"><i class="fa-solid fa-share"></i> Voltar </a> -->
-        	 <a class="btn btn-success" href="/listarCidade"><i class="fa-solid fa-list"></i> Listar </a> 
+        	 <a class="btn btn-success" href="/listarFuncionario"><i class="fa-solid fa-list"></i> Listar </a> 
           </form>
     </div>
-
-
-    </div>
-
-
 
 
 
