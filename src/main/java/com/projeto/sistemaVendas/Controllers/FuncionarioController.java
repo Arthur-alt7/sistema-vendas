@@ -25,7 +25,7 @@ public class FuncionarioController {
     @GetMapping("/cadastroFuncionario")
     public ModelAndView cadastrarFuncionario(Funcionario funcionario) throws Exception {
         ModelAndView mv = new ModelAndView("administrativo/funcionario/cadastro");
-        mv.addObject("Funcionario", funcionario);
+        mv.addObject("funcionario", funcionario);
         mv.addObject("listaCidades", cidadeService.getAllCidades());
         return mv; 
     }
