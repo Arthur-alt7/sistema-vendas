@@ -19,9 +19,9 @@ public class ItemEntrada implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Double quantidade = 0.00;
-    private Double valor = 0.00;
-    private Double valorCusto = 0.00;
+    private Double quantidade;
+    private Double valor;
+    private Double valorCusto;
    
     @ManyToOne
     private Entrada entrada;

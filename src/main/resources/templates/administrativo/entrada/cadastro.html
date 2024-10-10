@@ -88,12 +88,12 @@
                
                <label>Funcionário:</label>
                <select th:field="*{funcionario}" class="form-control">
-                 <option th:each="est : ${listaFuncionarios}" th:value="${est.id}" th:text="${est.nome}"></option>
+                 <option th:each="est : ${listaFuncionario}" th:value="${est.id}" th:text="${est.nome}"></option>
                </select>
                
                <label>Fornecedores:</label>
                <select th:field="*{fornecedor}" class="form-control">
-                 <option th:each="est : ${listaFornecedores}" th:value="${est.id}" th:text="${est.nome}"></option>
+                 <option th:each="est : ${listaFornecedor}" th:value="${est.id}" th:text="${est.nome}"></option>
                </select>
               
           

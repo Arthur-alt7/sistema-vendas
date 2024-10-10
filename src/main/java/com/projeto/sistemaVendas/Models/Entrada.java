@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "entrada")
 public class Entrada implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -20,8 +20,8 @@ public class Entrada implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String obs;
-    private Double valorTotal;
-    private Double quantidadeTotal;
+    private Double valorTotal = 0.00;
+    private Double quantidadeTotal = 0.00;
     private Date DataEntrada = new Date();
 
     @ManyToOne
