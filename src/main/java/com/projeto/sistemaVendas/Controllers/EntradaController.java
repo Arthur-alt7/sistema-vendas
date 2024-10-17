@@ -2,8 +2,8 @@ package com.projeto.sistemaVendas.Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,8 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.projeto.sistemaVendas.Models.Entrada;
 import com.projeto.sistemaVendas.Models.ItemEntrada;
 import com.projeto.sistemaVendas.Models.Produto;
+import com.projeto.sistemaVendas.Repository.EntradaRepository;
+import com.projeto.sistemaVendas.Repository.ItemEntradaRepository;
 import com.projeto.sistemaVendas.Services.EntradaService;
-import com.projeto.sistemaVendas.Services.EstadoService;
 import com.projeto.sistemaVendas.Services.FornecedorService;
 import com.projeto.sistemaVendas.Services.FuncionarioService;
 import com.projeto.sistemaVendas.Services.ItemEntradaService;
@@ -35,6 +36,11 @@ public class EntradaController {
     private FornecedorService fornecedorService;
     @Autowired
     private ItemEntradaService itemEntradaService;
+    @Autowired
+    private EntradaRepository entradaRepository;
+    @Autowired
+    private ItemEntradaRepository itemEntradaRepository;
+   
     
     private List<ItemEntrada> listaItemEntrada = new ArrayList<ItemEntrada>();
 
@@ -42,7 +48,7 @@ public class EntradaController {
     @GetMapping("/cadastroEntrada")
     public ModelAndView cadastrarEntrada(Entrada entrada, ItemEntrada itemEntrada) throws Exception {
         ModelAndView mv = new ModelAndView("administrativo/entrada/cadastro");
-        mv.addObject("Entrada", entrada);
+        mv.addObject("entrada", entrada);
         mv.addObject("itemEntrada", itemEntrada);
         mv.addObject("listaItemEntrada", this.listaItemEntrada);
         mv.addObject("listaFuncionario", funcionarioService.getAllFuncionarios());
@@ -91,17 +97,27 @@ public class EntradaController {
     @GetMapping("/listarEntrada")
     public ModelAndView listar() throws Exception {
         ModelAndView mv = new ModelAndView("administrativo/entrada/listaEntrada");
-        mv.addObject("listaEntradas", entradaService.getAllEntradas());
+        mv.addObject("listaEntrada", entradaService.getAllEntradas());
         return mv;
     }
 
-/*     @GetMapping("/editarEntrada/{id}")
+ //   @GetMapping("/editarEntrada/{id}")
+ //   public ModelAndView editar(@PathVariable("id") Long id) throws Exception {
+ //       //Optional<Entrada> entrada = EntradaRepository.findById(Id);
+ //       Entrada entrada = entradaService.findEntradaById(id);
+ //       this.listaItemEntrada = itemEntradaService.buscarPorEntrada(id);
+ //       //return cadastrarEntrada(entrada.get());
+ //       return cadastrarEntrada(entrada, new ItemEntrada());
+ //   } 
+
+    @GetMapping("/editarEntrada/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) throws Exception {
-        //Optional<Entrada> entrada = EntradaRepository.findById(Id);
-        Entrada entrada = entradaService.findEntradaById(id);
-        //return cadastrarEntrada(entrada.get());
-        return cadastrarEntrada(entrada);
-    } */
+    	Optional<Entrada> entrada = entradaRepository.findById(id);
+ 		this.listaItemEntrada = itemEntradaRepository.findByEntradaId(entrada.get().getId());
+ 		
+ 		return cadastrarEntrada(entrada.get(), new ItemEntrada());
+ 		
+ 	}
 
     @GetMapping("/removerEntrada/{id}")
 	public ModelAndView remover(@PathVariable("id") Long id) throws Exception {

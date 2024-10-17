@@ -12,8 +12,8 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "entrada")
-public class Entrada implements Serializable{
+@Table(name = "venda")
+public class Venda implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -22,13 +22,12 @@ public class Entrada implements Serializable{
     private String obs;
     private Double valorTotal = 0.00;
     private Double quantidadeTotal = 0.00;
-    private Date dataEntrada = new Date();
+    private Date dataVenda = new Date();
 
     @ManyToOne
-    private Fornecedor fornecedor;
+    private Cliente cliente;
     @ManyToOne
     private Funcionario funcionario;
-    
     
     public static long getSerialversionuid() {
         return serialVersionUID;
@@ -57,17 +56,17 @@ public class Entrada implements Serializable{
     public void setQuantidadeTotal(Double quantidadeTotal) {
         this.quantidadeTotal = quantidadeTotal;
     }
-    public Date getDataEntrada() {
-        return dataEntrada;
+    public Date getDataVenda() {
+        return dataVenda;
     }
-    public void setDataEntrada(Date dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
     }
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public Cliente getCliente() {
+        return cliente;
     }
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     public Funcionario getFuncionario() {
         return funcionario;
@@ -76,7 +75,7 @@ public class Entrada implements Serializable{
         this.funcionario = funcionario;
     }
     
-
     
+
 
 }

@@ -10,13 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.projeto.sistemaVendas.Models.Entrada;
+import com.projeto.sistemaVendas.Models.ItemEntrada;
 import com.projeto.sistemaVendas.Repository.EntradaRepository;
+import com.projeto.sistemaVendas.Repository.ItemEntradaRepository;
 
 @Service
 public class EntradaService {
 
     @Autowired
     private EntradaRepository entradaRepository;
+  
 
     public Entrada createEntrada(Entrada entrada){
         Entrada newEntrada = entrada;
@@ -43,6 +46,10 @@ public class EntradaService {
             throw new ResourceNotFoundException("Entrada não encontrado!");
         }
     }
+
+
+
+    
 
 
     

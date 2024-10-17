@@ -12,7 +12,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
 	    
-    <title>Lista entrada</title>
+    <title>Lista venda</title>
     
     
     
@@ -53,24 +53,24 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <thead>
   <tr>
     <td>ID</td>
-    <td>Nome Fornecedor</td>
+    <td>Nome Cliente</td>
     <td>Nome Funcionario</td>
-    <td>DataEntrada</td>
+    <td>DataVenda</td>
     <td>ValorTotal</td>
     <td>Opções</td>
   </tr>
 </thead>
 
 <tbody>
-  <tr th:each="entrada: ${listaEntrada}">
-    <td th:text="${entrada.id}"></td>
-    <td th:text="${entrada.fornecedor.nome}"></td>
-    <td th:text="${entrada.funcionario.nome}"></td>
-    <td th:text="${entrada.dataEntrada}"></td>
-    <td th:text="${entrada.valorTotal}"></td>
+  <tr th:each="venda: ${listaVenda}">
+    <td th:text="${venda.id}"></td>
+    <td th:text="${venda.cliente.nome}"></td>
+    <td th:text="${venda.funcionario.nome}"></td>
+    <td th:text="${venda.dataVenda}"></td>
+    <td th:text="${venda.valorTotal}"></td>
     <td colspan="2">
-      <a th:href="@{/editarEntrada/{id}(id=${entrada.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-      <a th:href="@{/removerEntrada/{id}(id=${entrada.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
+      <a th:href="@{/editarVenda/{id}(id=${venda.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
+      <a th:href="@{/removerVenda/{id}(id=${venda.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
     </td>
     
   
@@ -80,7 +80,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 </table>
 
        <a class="btn btn-danger" href="/administrativo"><i class="fa-solid fa-share"></i> Voltar </a> 
-       <a class="btn btn-primary" href="/cadastroEntrada"><i class="fa-solid fa-plus"></i> Cadastrar </a> 
+       <a class="btn btn-primary" href="/cadastroVenda"><i class="fa-solid fa-plus"></i> Cadastrar </a> 
     
       
      

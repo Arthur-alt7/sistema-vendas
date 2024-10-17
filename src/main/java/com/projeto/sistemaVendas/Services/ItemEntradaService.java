@@ -17,6 +17,8 @@ public class ItemEntradaService {
 
     @Autowired
     private ItemEntradaRepository itemEntradaRepository;
+    //@Autowired
+    //private ListaItemEntrada listaItemEntrada;
 
     public ItemEntrada createItemEntrada(ItemEntrada itemEntrada){
         ItemEntrada newItemEntrada = itemEntrada;
@@ -43,6 +45,11 @@ public class ItemEntradaService {
             throw new ResourceNotFoundException("ItemEntrada não encontrado!");
         }
     }
+
+    public List<ItemEntrada> buscarPorEntrada(Long id){
+        List<ItemEntrada> listaItemEntrada = this.itemEntradaRepository.findByEntradaId(id);
+        return (listaItemEntrada);
+    } 
 
 
     
