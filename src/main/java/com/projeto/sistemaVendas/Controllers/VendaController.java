@@ -34,7 +34,7 @@ public class VendaController {
     @Autowired
     private ProdutoService produtoService;
     @Autowired
-    private ClienteService clientService;
+    private ClienteService clienteService;
     @Autowired
     private ItemVendaService itemVendaService;
     @Autowired
@@ -53,7 +53,7 @@ public class VendaController {
         mv.addObject("itemVenda", itemVenda);
         mv.addObject("listaItemVenda", this.listaItemVenda);
         mv.addObject("listaFuncionario", funcionarioService.getAllFuncionarios());
-        mv.addObject("listaFornecedor", clientService.getAllClientes());
+        mv.addObject("listaCliente", clienteService.getAllClientes());
         mv.addObject("listaProduto", produtoService.getAllProdutos());
         return mv; 
     }
@@ -65,21 +65,24 @@ public class VendaController {
 		}
 		
 		if(acao.equals("itens")) {
-			this.listaItemVenda.add(itemVenda);
+			itemVenda.setValor(itemVenda.getProduto().getPrecoVenda());
+            itemVenda.setSubTotal(itemVenda.getProduto().getPrecoVenda()*itemVenda.getQuantidade());
 			venda.setValorTotal(venda.getValorTotal() + (itemVenda.getValor() * itemVenda.getQuantidade()));
 			venda.setQuantidadeTotal(venda.getQuantidadeTotal() + itemVenda.getQuantidade());
 			
+            this.listaItemVenda.add(itemVenda);
 		}else if(acao.equals("salvar")) {
             vendaService.createVenda(venda);
 			
 			for(ItemVenda item: listaItemVenda) {
 				item.setVenda(venda);
+                //item.setSubTotal(item.getValor()*item.getQuantidade());
 				itemVendaService.createItemVenda(item);
 
                 Produto prod = produtoService.findProdutoById(item.getProduto().getId());
 				//Optional<Produto> prod = produtoRepositorio.findById(item.getProduto().getId());
 				//Produto produto = prod.get();
-				prod.setEstoque(prod.getEstoque() + item.getQuantidade());
+				prod.setEstoque(prod.getEstoque() - item.getQuantidade());
 				prod.setPrecoVenda(item.getValor());
 				prod.setPrecoCusto(item.getSubTotal());
                 produtoService.createProduto(prod);

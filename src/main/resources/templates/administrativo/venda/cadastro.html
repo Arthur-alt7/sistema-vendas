@@ -62,10 +62,7 @@
           </div>
           
           
-          <div class="col">
-            <label >Valor de Venda:</label>
-              <input type="number"  class="form-control" th:field="*{valor}">
-          </div>
+          
           
           <div class="col">
             <button  name="acao" th:value="itens" style="margin-top: 32px" type="submit" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i> Adicionar</button>
@@ -89,7 +86,7 @@
                
                <label>Cliente:</label>
                <select th:field="*{cliente}" class="form-control">
-                 <option th:each="est : ${listaClientes}" th:value="${est.id}" th:text="${est.nome}"></option>
+                 <option th:each="est : ${listaCliente}" th:value="${est.id}" th:text="${est.nome}"></option>
                </select>
               
           
@@ -113,9 +110,9 @@
         <tr>
           <td>ID</td>
           <td>Produto</td>
-          <td>Quantidade</td>
+          <td>Quantidade</td>       
+          <td>Valor Unitário</td>
           <td>SubTotal</td>
-          <td>Valor venda</td>
           <td>Ação</td>
         </tr>
       </thead>
@@ -125,8 +122,8 @@
           <td th:text="${itemVenda.id}"></td>
           <td th:text="${itemVenda.produto.nome}"></td>
           <td th:text="${itemVenda.quantidade}"></td>
-          <td th:text="${itemVenda.subTotal}"></td>
           <td th:text="${itemVenda.valor}"></td>
+          <td th:text="${itemVenda.subTotal}"></td>        
           <td colspan="2">
             <a th:href="@{/removerItemVenda/{id}(id=${itemVenda.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
           </td>
